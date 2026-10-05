@@ -29,8 +29,8 @@ R² on a 30% held-out test set, with price log-transformed.
 
 | Dataset | Rows | Features | Description |
 |---|---|---|---|
-| `Cars.csv` | 2,059 | 20 | Indian used-car listings: make, model, year, kilometres, fuel type, transmission, engine, power, torque, dimensions, owner and seller type, etc. |
-| `Validation.csv` | 976 | 4 | Reduced set: year, seating capacity, transmission, max power |
+| `data/Cars.csv` | 2,059 | 20 | Indian used-car listings: make, model, year, kilometres, fuel type, transmission, engine, power, torque, dimensions, owner and seller type, etc. |
+| `data/Validation.csv` | 976 | 4 | Reduced set: year, seating capacity, transmission, max power |
 
 Cars range from 1988 to 2022, across 33 manufacturers and 77 locations, with a median price of ₹8.25 lakh.
 
@@ -52,18 +52,22 @@ Cars range from 1988 to 2022, across 33 manufacturers and 77 locations, with a m
 
 ## Repository structure
 
-| File | Description |
-|---|---|
-| `Linear_Regression_Model(O).ipynb` | Full pipeline (cleaning, EDA, encoding) and Linear Regression on the full dataset |
-| `KNN_Model(O).ipynb` | KNN on the full dataset, with tuning |
-| `XGB_Model(O).ipynb` | XGBoost on the full dataset, with tuning |
-| `*_Model(V).ipynb` | The same three models on the reduced dataset |
-| `Cars.csv` | Full dataset |
-| `Validation.csv` | Reduced dataset |
+```
+├── data/
+│   ├── Cars.csv                   # Full dataset (2,059 cars, 20 features)
+│   └── Validation.csv             # Reduced dataset (976 cars, 4 features)
+└── notebooks/
+    ├── full_dataset/
+    │   ├── linear_regression.ipynb  # Full pipeline: cleaning, EDA, encoding + Linear Regression
+    │   ├── knn.ipynb                # KNN with GridSearchCV tuning
+    │   └── xgb.ipynb                # XGBoost with GridSearchCV tuning
+    └── reduced_dataset/
+        ├── linear_regression.ipynb
+        ├── knn.ipynb
+        └── xgb.ipynb
+```
 
-`(O)` = original (full) dataset, `(V)` = validation (reduced) dataset.
-
-**To run:** open any notebook in Google Colab, upload the matching CSV (`Cars.csv` for `(O)`, `Validation.csv` for `(V)`) to the Files panel, and run all cells.
+**To run:** open a notebook in Google Colab, upload the matching CSV from `data/` (`Cars.csv` for `full_dataset`, `Validation.csv` for `reduced_dataset`) to the Files panel, and run all cells.
 
 ---
 
